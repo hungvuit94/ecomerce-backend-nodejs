@@ -7,7 +7,15 @@ const compression = require('compression');
 const app = express();
 // init middleware
 app.use(morgan('dev'));
+
+ // curl http://localhost:3052 --include ( che dau X-Powered-By: Express de khong lo cong nghe su dung)
 app.use(helmet());
+
+// app.get('/', (req, res, next) => {
+//   return res.status(200).json({
+//     data: "hello world".repeat(100000)
+//   })
+// });
 app.use(compression());
 app.use(express.json());
 app.use(
@@ -16,11 +24,13 @@ app.use(
   })
 );
 
+
 // init db
 require('./dbs/init.mongodb');
 const { checkOverload } = require('./helpers/check.connect');
 
 // checkOverload();
+
 // init router
 app.use('/', require('./routes'));
 

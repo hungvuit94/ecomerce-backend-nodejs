@@ -3,24 +3,24 @@
 // level 0
 const dev = {
   app: {
-    port: process.env.DEV_APP_PORT,
+    port: process.env.DEV_APP_PORT || 3052,
   },
   db: {
-    host: '172.17.0.2',
-    port: 27017,
-    name: 'shopDEV',
+    host: process.env.DEV_DB_HOST || '172.17.0.2',
+    port: process.env.DEV_DB_PORT || 27017,
+    name: process.env.DEV_DB_NAME || 'shopDEV',
   },
 };
 
 // level 1
 const pro = {
   app: {
-    port: 3000,
+    port: process.env.PRO_APP_PORT || 3000,
   },
   db: {
-    host: '172.17.0.3',
-    port: 27017,
-    name: 'Dbproduct',
+    host: process.env.PRO_DB_HOST || '172.17.0.2',
+    port: process.env.PRO_APP_PORT || 27017,
+    name: process.env.PRO_DB_NAME || 'shopPRO',
   },
 };
 
